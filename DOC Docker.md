@@ -91,3 +91,4 @@ Il va donc mettre en place un fichier Compose.yml -> YAML qui va donner les inst
 ```
 Ce fichier .yml sert a gerer les 3 image: wordpress, nginx et mariadb
 un dockerfile doit obligatoirement commencer par FROM et le .yml respecter les norme de la version de Compose
+
