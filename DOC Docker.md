@@ -92,3 +92,14 @@ Il va donc mettre en place un fichier Compose.yml -> YAML qui va donner les inst
 Ce fichier .yml sert a gerer les 3 image: wordpress, nginx et mariadb
 un dockerfile doit obligatoirement commencer par FROM et le .yml respecter les norme de la version de Compose
 
+### ok Commençont par le docker de nginx
+
+quelque commande -> docker build -t nginx = initialise un conteneur qui se nommera nginx grace a loption -t qui permet de donner un nom a son conteneur.
+ docker image ls = visualise tout les conteneur sur votre machine.
+ docker run <image-name> = demarre l'image et avec loption -it vous emmene directenment dans le terminal du conteneur loption -d sert la laisse le container actif en fond (sur un autre porcessus).
+ docker ps = afficher les contenreur actuellement lancer et avec l'option -a ajoute les conteneur stopper.
+ docker system prune = supprime tout les conteneur qui ne son pas en status running
+ docker rm <id container> = detruit le conteneur et son contenu
+ docker stop <id container> = stop le conteneur
+ 
+ 
