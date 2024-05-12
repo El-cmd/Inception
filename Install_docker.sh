@@ -20,11 +20,11 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 # Vérifier si Docker est installé correctement
-if sudo docker run hello-world; then
-    echo "Docker est correctement installé et fonctionnel."
-else
-    echo "Une erreur s'est produite lors de l'installation de Docker."
-fi
+#if sudo docker run hello-world; then
+#    echo "Docker est correctement installé et fonctionnel."
+#else
+#    echo "Une erreur s'est produite lors de l'installation de Docker."
+#fi
 
 # Ajouter l'utilisateur courant au groupe Docker pour permettre l'exécution sans sudo
 #echo "Ajout de l'utilisateur $(whoami) au groupe Docker..."
