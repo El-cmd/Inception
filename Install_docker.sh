@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+#installation des commande
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install curl -y
+
 # Définition des variables
 GPG_KEY_URL="https://download.docker.com/linux/debian/gpg"
 DOCKER_REPO="https://download.docker.com/linux/debian"
@@ -16,7 +22,8 @@ echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 
 # Mise à jour des paquets et installation de Docker
 echo "Mise à jour des paquets et installation de Docker..."
-sudo apt update
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 # Vérifier si Docker est installé correctement
