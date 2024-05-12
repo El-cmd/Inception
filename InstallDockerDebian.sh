@@ -5,6 +5,8 @@
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install curl -y
+sudo apt install gnupg -y
+
 # Définition des variables
 GPG_KEY_URL="https://download.docker.com/linux/debian/gpg"
 DOCKER_REPO="https://download.docker.com/linux/debian"
