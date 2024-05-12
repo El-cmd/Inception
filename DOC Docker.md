@@ -101,5 +101,5 @@ quelque commande -> docker build -t nginx = initialise un conteneur qui se nomme
  docker system prune = supprime tout les conteneur qui ne son pas en status running
  docker rm <id container> = detruit le conteneur et son contenu
  docker stop <id container> = stop le conteneur
- 
+ docker rmi -f [IMAGE_ID] = force la suppression de limage d'un conteneur surtout pour limage exemple hello world
  
