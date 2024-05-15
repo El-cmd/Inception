@@ -102,4 +102,46 @@ quelque commande -> docker build -t nginx = initialise un conteneur qui se nomme
  docker rm <id container> = detruit le conteneur et son contenu
  docker stop <id container> = stop le conteneur
  docker rmi -f [IMAGE_ID] = force la suppression de limage d'un conteneur surtout pour limage exemple hello world
+
+
+### OpenSSL
+
+OpenSSL est un outil pour generer et gerer des certifcat ssl.
+je dois maintenant gerer le certificat ssl grace a openssl que je vais installer sur le containeur de nginx: 
+
+installer openssl: dans le dockerfile de nginx -> 
+RUN apt install OpenSSL -y -> install openssl sur le conteneur
+
+Ensuite il faut generer le certificat ssl ->
+RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/0=42/OU=42/CN=vloth.42.fr/UID=vloth"
+
+Explication pour chaque option ->
+
+`req` : Cette option indique à OpenSSL de lancer la commande de gestion de demande de certificat et de clés de certificat (CSR). Elle peut créer des CSR et aussi générer des certificats.
+
+`-x509` : Cette option indique à `openssl req` de générer un certificat auto-signé plutôt qu'une demande de signature de certificat (CSR). L'utilisation de `-x509` transforme la commande de génération de CSR en une commande de génération de certificat.
+
+`-nodes` : Cela indique que la clé privée ne doit pas être chiffrée. Sans cette option, OpenSSL demanderait un mot de passe pour sécuriser la clé privée.
+
+`-out`: Spécifie le chemin et le nom du fichier où enregistrer le certificat auto-signé généré.
+
+`-keyout` : Spécifie où enregistrer la clé privée générée par cette commande.
+
+`-subj` : Cette option permet de fournir les informations du sujet qui seront utilisées dans le certificat. Elle est utilisée pour éviter l'interaction manuelle lors de la création de certificats ou de CSR. Voici ce que signifient les abréviations et leur contenu :
+
+- **`/C=FR`** : Code du pays (Country Code), ici "FR" pour France.
+- **`/ST=IDF`** : État ou province, ici "IDF" pour Île-de-France.
+- **`/L=Paris`** : Localité ou ville.
+- **`/O=42`** : Organisation, ici "42" qui peut être le nom de l'école ou de l'entreprise.
+- **`/OU=42`** : Unité organisationnelle, ici aussi "42", souvent utilisée pour le département ou la division.
+- **`/CN=login.42.fr`** : Nom commun, généralement le nom de domaine complet associé au certificat.
+- **`/UID=login`** : Identifiant utilisateur, un champ optionnel qui peut être utilisé pour ajouter un identifiant spécifique.
+
+L'utilisation de `-subj` dans cette commande remplit le certificat avec ces détails spécifiques, ce qui est crucial pour l'identification et la sécurité dans les communications cryptées, comme celles utilisées dans HTTPS. Ce certificat peut alors être utilisé par Nginx pour établir des connexions sécurisées SSL/TLS.
+
+
+
+
+
+
  
