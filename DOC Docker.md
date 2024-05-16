@@ -139,9 +139,30 @@ Explication pour chaque option ->
 
 L'utilisation de `-subj` dans cette commande remplit le certificat avec ces détails spécifiques, ce qui est crucial pour l'identification et la sécurité dans les communications cryptées, comme celles utilisées dans HTTPS. Ce certificat peut alors être utilisé par Nginx pour établir des connexions sécurisées SSL/TLS.
 
+il va falloir maintenant configurer nginx avec un fichier de configuration que lon va copier dans l'image grace a la commande COPY conf/nginx.conf etc/nginx/nginx.conf
+ 'server {
+#SSL/TLS configuration nginx
+listen 443;
+ssl on;
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+ssl_certificate /etc/nginx/ssl/inception.crt;
+ssl_certificate_key /etc/nginx/ssl/inception.key;
+#root, server name and index
+server_name vloth.42.fr; # ou localhost
+location / {
+root /var/www/html;
+index index.html index.php;
+try_files $uri $uri/ =404;
+}
+#location ~ \.php$ { # Pour toutes les requetes php
+# include snippets/fastcgi-php.conf;
+# fastcgi_pass wordpress:9000; # Comment renvoyer les requetes php sur le port 9000
+#}
+}'  -> le fichier de config
 
 
 
 
 
- 
+
+
