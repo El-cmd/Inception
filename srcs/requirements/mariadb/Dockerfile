@@ -9,7 +9,8 @@ COPY tableSQL.sh /entrypoint/
 
 WORKDIR /entrypoint
 
+EXPOSE 3306
+
 ENTRYPOINT [ "bash" "tableSQL" ]
 
-EXPOSE 3306
 
