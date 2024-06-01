@@ -164,6 +164,7 @@ try_files $uri $uri/ =404;
 https://www.numetopia.fr/comment-changer-le-nom-de-machine-sur-debian-ubuntu-ou-linux-mint/ le liens pour modif le hostname de la machine 
 
 
+gsettings set org.gnome.desktop.interface clock-show-seconds true --> mettre les second 
 
 
 
