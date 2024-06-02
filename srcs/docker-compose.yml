@@ -48,4 +48,6 @@ services:
         expose:
             - "9000"
 
+networks:
+    inception:
 
