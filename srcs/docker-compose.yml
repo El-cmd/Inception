@@ -39,13 +39,13 @@ services:
         #volumes:
         #    -wordpress:/var/www/wordpress
         networks:
-        - inception
+            - inception
         build:
             context: requirements/wordpress
             dockerfile: Dockerfile
         depends_on:
-        - mariadb
+            - mariadb
         expose:
-        - "9000"
+            - "9000"
 
 
