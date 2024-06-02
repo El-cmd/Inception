@@ -33,19 +33,19 @@ services:
         expose:
             - "3306"
         
-wordpress:
-    container_name: wordpress
-    env_file: .env
-    #volumes:
-    #    -wordpress:/var/www/wordpress
-    networks:
-    - inception
-    build:
-        context: requirements/wordpress
-        dockerfile: Dockerfile
-    depend_on:
-    - mariadb
-    expose:
-    - "9000"
+    wordpress:
+        container_name: wordpress
+        env_file: .env
+        #volumes:
+        #    -wordpress:/var/www/wordpress
+        networks:
+        - inception
+        build:
+            context: requirements/wordpress
+            dockerfile: Dockerfile
+        depend_on:
+        - mariadb
+        expose:
+        - "9000"
 
 
