@@ -11,6 +11,6 @@ WORKDIR /entrypoint
 
 EXPOSE 3306
 
-ENTRYPOINT [ "bash" "tableSQL" ]
+ENTRYPOINT [ "bash", "./tableSQL" ]
 
 
