@@ -15,6 +15,9 @@ RUN rm /etc/nginx/sites-enabled/default
 COPY conf/nginx.conf /etc/nginx/sites-available/my_site.conf
 RUN ln -s /etc/nginx/sites-available/my_site.conf /etc/nginx/sites-enabled/my_site.conf
 
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
+
 EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]	
