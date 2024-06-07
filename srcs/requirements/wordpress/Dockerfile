@@ -23,4 +23,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp && mkdir /run/php
 
 EXPOSE 9000
 
-ENTRYPOINT [ "/usr/sbin/php-fpm7.3", "-F" ]
+RUN wp-config create
+
+CMD [ "/usr/sbin/php-fpm7.3", "-F" ]
