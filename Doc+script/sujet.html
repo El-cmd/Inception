@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet d'infrastructure avec Docker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li.task {
+            display: flex;
+            align-items: center;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Projet d'infrastructure avec Docker</h1>
+        <p>Ce projet consiste à mettre en place une petite infrastructure composée de différents services selon des règles spécifiques.</p>
+        <h2>Tâches :</h2>
+        <ul>
+            <li class="task"><input type="checkbox" disabled> Mettre en place Docker Compose</li>
+            <li class="task"><input type="checkbox" disabled> Créer des Dockerfiles pour chaque service</li>
+            <li class="task"><input type="checkbox" disabled> Construire les images Docker</li>
+            <li class="task"><input type="checkbox" disabled> Configurer un conteneur NGINX avec TLSv1.2 ou TLSv1.3</li>
+            <li class="task"><input type="checkbox" disabled> Configurer un conteneur WordPress + php-fpm sans nginx</li>
+            <li class="task"><input type="checkbox" disabled> Configurer un conteneur MariaDB sans nginx</li>
+            <li class="task"><input type="checkbox" disabled> Créer des volumes pour la base de données WordPress et les fichiers du site</li>
+            <li class="task"><input type="checkbox" disabled> Établir un réseau Docker entre les conteneurs</li>
+            <li class="task"><input type="checkbox" disabled> Faire redémarrer les conteneurs en cas de plantage</li>
+            <li class="task"><input type="checkbox" disabled> Configurer deux utilisateurs dans la base de données WordPress</li>
+            <li class="task"><input type="checkbox" disabled> Configurer les volumes pour être accessibles sur la machine hôte</li>
+            <li class="task"><input type="checkbox" disabled> Configurer le nom de domaine pour pointer vers l'adresse IP locale</li>
+            <li class="task"><input type="checkbox" disabled> Configurer le conteneur NGINX comme seul point d'entrée avec le port 443 et TLSv1.2 ou TLSv1.3</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List - Projet Docker</title>
+  <style>
+    .task {
+      margin-bottom: 10px;
+    }
+    .task input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>To Do List - Projet Docker</h1>
+  <ul>
+    
+  <li class="task"><input type="checkbox" > Configurer une machine virtuelle pour le projet</li>
+  <p > pour configurer sinspirer de b2r <a  href="https://github.com/pasqualerossi/Born2BeRoot-Guide" > Tuto </a></p>
+  <li class="task"><input type="checkbox" > Installer Docker et Docker Compose sur la machine virtuelle</li>
+  <h6> Prompt gpt pour installer docker et toute ces dependance et de paquet manager</h6>
+  <p>Ces étapes expliquent comment préparer et installer Docker sur un système Debian.</p>
+  <ol>
+      <li>
+          <h2>Mise à jour des paquets et installation des prérequis</h2>
+          <code>sudo apt-get update && sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common</code>
+          <ul>
+              <li><strong>sudo apt-get update</strong> : Met à jour l'index des paquets.</li>
+              <li><strong>sudo apt-get install ...</strong> : Installe les paquets nécessaires pour télécharger via HTTPS et gérer les clés de sécurité.</li>
+          </ul>
+      </li>
+      <li>
+          <h2>Ajout de la clé GPG du dépôt officiel de Docker</h2>
+          <code>curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -</code>
+          <ul>
+              <li><strong>curl -fsSL [URL]</strong> : Télécharge la clé GPG de manière sécurisée.</li>
+              <li><strong>sudo apt-key add -</strong> : Ajoute la clé au système de gestion des paquets.</li>
+          </ul>
+      </li>
+      <li>
+          <h2>Ajout du dépôt Docker à la liste des sources de paquets</h2>
+          <code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"</code>
+          <ul>
+              <li>Ajoute le dépôt de Docker pour Debian pour la branche stable et la version spécifique du système.</li>
+          </ul>
+      </li>
+      <li>
+          <h2>Mise à jour des paquets et installation de Docker</h2>
+          <code>sudo apt update && sudo apt-get install docker-ce docker-ce-cli containerd.io</code>
+          <ul>
+              <li><strong>sudo apt update</strong> : Actualise l'index des paquets après l'ajout du nouveau dépôt.</li>
+              <li><strong>sudo apt-get install ...</strong> : Installe Docker et ses composants essentiels.</li>
+          </ul>
+      </li>
+  </ol>
+  <p> Jai fais deux scripte finalement car je rencontrer une erreur -> ## Ereur Trouvé 
+    #Ajout de la clé GPG pour Docker...
+    #Le fichier « /usr/share/keyrings/docker-archive-keyring.gpg » existe. Faut-il réécrire par-dessus ? (o/N) o
+    #Ajout du dépôt Docker...
+    #Mise à jour des paquets et installation de Docker...
+    #Atteint :1 http://security.debian.org/debian-security bookworm-security InRelease
+    #Atteint :2 http://deb.debian.org/debian bookworm InRelease                    
+    #Atteint :3 http://deb.debian.org/debian bookworm-updates InRelease            
+    #Ign :4 https://download.docker.com/linux/ubuntu bookworm InRelease            
+    #Err :5 https://download.docker.com/linux/ubuntu bookworm Release
+    #  404  Not Found [IP : 18.239.94.127 443]
+    #Lecture des listes de paquets... Fait
+    #E: Le dépôt https://download.docker.com/linux/ubuntu bookworm Release n'a pas de fichier Release.
+    #N: Les mises à jour depuis un tel dépôt ne peuvent s'effectuer de manière sécurisée, et sont donc désactivées par défaut.
+    #N: Voir les pages de manuel d'apt-secure(8) pour la création des dépôts et les détails de configuration d'un utilisateur.
+    #Lecture des listes de paquets... Fait
+    #Construction de l'arbre des dépendances... Fait
+    #Lecture des informations d'état... Fait      
+    #Aucune version du paquet docker-ce n'est disponible, mais il existe dans la base
+    #de données. Cela signifie en général que le paquet est manquant, qu'il est devenu obsolète
+    #ou qu'il n'est disponible que sur une autre source
+    #
+    #Aucune version du paquet docker-ce-cli n'est disponible, mais il existe dans la base
+    #de données. Cela signifie en général que le paquet est manquant, qu'il est devenu obsolète
+    #ou qu'il n'est disponible que sur une autre source
+    #
+    #E: Le paquet « docker-ce » n'a pas de version susceptible d'être installée
+    #E: Le paquet « docker-ce-cli » n'a pas de version susceptible d'être installée
+    #E: Impossible de trouver le paquet containerd.io
+    #E: Impossible de trouver de paquet correspondant à l'expression rationnelle « containerd.io »
+    </p>
+    <p> Les deux scripte sont dans le dossier. un pour unbuntu et un pour debian ne pas oublier de les chmod +x</p>
+  <br>
+  <br>
+  <li class="task"><input type="checkbox" > Créer les Dockerfiles pour chaque service (NGINX, WordPress, MariaDB)</li>
+  <li class="task"><input type="checkbox" > Écrire un docker-compose.yml pour définir les services et leurs configurations</li>
+	<li class="task"><input type="checkbox" > Construire les images Docker à partir des Dockerfiles </li>
+	<li class="task"><input type="checkbox" > Configurer NGINX avec TLSv1.2 ou TLSv1.3 uniquement </li>
+	<li class="task"><input type="checkbox" > Installer et configurer WordPress avec php-fpm </li>
+	<li class="task"><input type="checkbox" > Installer et configurer MariaDB </li> 
+	<li class="task"><input type="checkbox" > Créer des volumes pour la base de données WordPress et les fichiers du site </li>
+	<li class="task"><input type="checkbox" > Configurer un réseau Docker pour connecter les conteneurs </li>
+	<li class="task"><input type="checkbox" > Mettre en place le redémarrage automatique des conteneurs en cas de crash </li>
+	<li class="task"><input type="checkbox" > Créer deux utilisateurs dans la base de données WordPress, dont un administrateur </li>
+	<li class="task"><input type="checkbox" > Configurer le nom de domaine pour qu'il pointe vers l'adresse IP locale </li>
+	<li class="task"><input type="checkbox" > Utiliser des variables d'environnement dans les configurations </li>
+	<li class="task"><input type="checkbox" > Stocker les variables d'environnement dans un fichier .env à la racine du répertoire srcs </li>
+	<li class="task"><input type="checkbox" > Tester l'accès au site via le conteneur NGINX sur le port 443 </li>
+	<li class="task"><input type="checkbox" > Vérifier que tout fonctionne correctement et résoudre les problèmes éventuels </li>
+	<li class="task"><input type="checkbox" > Documenter le processus d'installation et de configuration </li>
+  <li class="task"><input type="checkbox" > Le nom de domaine doit etre login.42.fr </li>
+  
+    <!-- Ajoutez ici d'autres tâches en suivant le même format -->
+  </ul>
+</body>
+</html>
