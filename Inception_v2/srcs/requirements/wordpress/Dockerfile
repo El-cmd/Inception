@@ -16,4 +16,4 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 9000
 
 # Démarrer PHP-FPM
-CMD ["php-fpm7.3", "-F"]
+CMD ["php-fpm", "-F"]
