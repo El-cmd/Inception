@@ -1,6 +1,0 @@
-[mysqld] #config coté serveur
-datadir = /var/lib/mysql #dossier qui stocke la base de données
-socket = /run/mysqld/mysqld.sock #chemin ou mysql peut trouver la socket
-bind_address=* #les addresse ip qui peuvent se connecter au serveur
-port = 3306 #indique a mysql sur quel port communiquer
-user = mysql #ajout de lutilisateur
