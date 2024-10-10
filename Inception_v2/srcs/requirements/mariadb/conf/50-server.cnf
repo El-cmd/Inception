@@ -4,11 +4,11 @@ user            = mysql	#Définit l'utilisateur sous lequel le serveur s'exécut
 pid-file        = /var/run/mysqld/mysqld.pid	#Emplacement du fichier PID, qui stocke l'identifiant de processus du serveur.
 socket          = /var/run/mysqld/mysqld.sock	#Le fichier socket Unix pour les connexions locales. Cela permet à MariaDB de communiquer via un fichier de socket, au lieu de passer par le réseau.
 port            = 3306	#Le port sur lequel MariaDB écoute pour les connexions réseau. Par défaut, c'est le port 3306.
-basedir         = /usr
-datadir         = /var/lib/mysql
-tmpdir          = /tmp
-lc-messages-dir = /usr/share/mysql
-skip-external-locking
+basedir         = /usr #Ce paramètre définit le répertoire de base où MariaDB est installé. Il s'agit de l'emplacement où les fichiers binaires du serveur et les bibliothèques partagées de MariaDB sont situés.
+datadir         = /var/lib/mysql #Emplacement du répertoire de données de MariaDB. C'est là que les fichiers de la base de données sont stockés.
+tmpdir          = /tmp #Spécifie l'emplacement où les fichiers temporaires sont stockés pour des opérations comme les tris.
+lc-messages-dir = /usr/share/mysql #Ce paramètre spécifie le répertoire où les fichiers de messages localisés  
+skip-external-locking #Désactive le verrouillage externe des fichiers pour améliorer la compatibilité entre différentes plateformes.
 
 # Sécurité
-bind-address    = 0.0.0.0
+bind-address    = 0.0.0.0 #Définit l'adresse IP sur laquelle MariaDB écoute. 0.0.0.0 permet à MariaDB d'écouter sur toutes les interfaces réseau.
