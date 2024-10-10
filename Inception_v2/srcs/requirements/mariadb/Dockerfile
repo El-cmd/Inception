@@ -12,6 +12,9 @@ COPY ./tools/setup_db.sh /usr/local/bin/setup_db.sh
 
 RUN chmod +x /usr/local/bin/setup_db.sh
 
+# Ajuster les permissions du répertoire de données MariaDB
+RUN chown -R mysql:mysql /var/lib/mysql && chmod -R 755 /var/lib/mysql
+
 # Exposer le port 3306 pour MariaDB
 EXPOSE 3306
 
