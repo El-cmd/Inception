@@ -1,0 +1,14 @@
+#Cette section configure les paramètres spécifiques pour le processus mysqld, qui est le serveur MariaDB.
+[mysqld]
+user            = mysql	#Définit l'utilisateur sous lequel le serveur s'exécute. Cela garantit que MariaDB n'a que les permissions nécessaires pour accéder aux fichiers de la base de données.
+pid-file        = /var/run/mysqld/mysqld.pid	#Emplacement du fichier PID, qui stocke l'identifiant de processus du serveur.
+socket          = /var/run/mysqld/mysqld.sock	#Le fichier socket Unix pour les connexions locales. Cela permet à MariaDB de communiquer via un fichier de socket, au lieu de passer par le réseau.
+port            = 3306	#Le port sur lequel MariaDB écoute pour les connexions réseau. Par défaut, c'est le port 3306.
+basedir         = /usr
+datadir         = /var/lib/mysql
+tmpdir          = /tmp
+lc-messages-dir = /usr/share/mysql
+skip-external-locking
+
+# Sécurité
+bind-address    = 0.0.0.0

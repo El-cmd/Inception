@@ -14,3 +14,6 @@ RUN chmod +x /usr/local/bin/setup_db.sh
 
 # Exposer le port 3306 pour MariaDB
 EXPOSE 3306
+
+#Utiliser ENTRYPOINT pour garantir l'exécution du script à chaque démarrage du conteneur
+ENTRYPOINT ["/usr/local/bin/setup_db.sh"]
