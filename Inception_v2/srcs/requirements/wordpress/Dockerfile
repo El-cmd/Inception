@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 # Installer PHP-FPM et WordPress et créer le repertoire si necessaire
-RUN apt-get update && apt-get install -y php-fpm php-mysql curl wget unzip && mkdir -p /var/www/html
+RUN apt-get update && apt-get install -y php-fpm php-mysql curl wget unzip mariadb-client && mkdir -p /var/www/html
 
 # Télécharger et installer WordPress
 RUN wget https://wordpress.org/latest.tar.gz && \
