@@ -1,19 +1,16 @@
 FROM debian:bullseye
 
 # Installer PHP-FPM et WordPress et créer le repertoire si necessaire
-RUN apt-get update && apt-get install -y php-fpm php-mysql curl wget unzip mariadb-client && mkdir -p /var/www/html
+RUN apt-get update && apt-get install -y php7.4-fpm php-mysql php curl wget unzip mariadb-client
 
-# Télécharger et installer WordPress
-RUN wget https://wordpress.org/latest.tar.gz && \
-    tar -xzvf latest.tar.gz && \
-    rm latest.tar.gz && \
-    mv wordpress /var/www/html
+# copy the wordpress configuration script to the root directory in the container
+COPY ./tools/wp_conf.sh /
 
-# Définir les permissions pour WordPress
-RUN chown -R www-data:www-data /var/www/html
+#rendre .sh executable
+RUN  chmod +x ./tools/wp_script.sh
 
 # Exposer le port pour PHP-FPM
 EXPOSE 9000
 
-# Démarrer PHP-FPM
-CMD ["php-fpm", "-F"]
+# Démarrer le script 
+ENTRYPOINT [ "./wp_script.sh" ]
