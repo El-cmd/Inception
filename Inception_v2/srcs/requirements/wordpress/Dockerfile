@@ -4,10 +4,10 @@ FROM debian:bullseye
 RUN apt-get update && apt-get install -y php7.4-fpm php-mysql php curl wget unzip mariadb-client
 
 # copy the wordpress configuration script to the root directory in the container
-COPY ./tools/wp_conf.sh /
+COPY ./tools/wp_script.sh /
 
 #rendre .sh executable
-RUN  chmod +x ./tools/wp_script.sh
+RUN  chmod +x tools/wp_script.sh
 
 # Exposer le port pour PHP-FPM
 EXPOSE 9000
