@@ -58,7 +58,7 @@ sleep 5
 
 # Redémarrer MariaDB en mode sûr
 echo "Redémarrage de MariaDB avec mysqld_safe..."
-exec mysqld_safe &
+exec mysqld_safe
 
 # Confirmation de la configuration terminée
 echo "Configuration de MariaDB terminée."

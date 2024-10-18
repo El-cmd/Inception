@@ -14,7 +14,7 @@ chmod -R 755 /var/www/wordpress/
 # change owner of wordpress directory to www-data
 chown -R www-data:www-data /var/www/wordpress
 
-sleep 5 # Wait for 1 second before trying again
+sleep 30 # Wait for 1 second before trying again
 
 # download wordpress core files
 wp core download --allow-root
