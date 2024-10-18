@@ -28,30 +28,37 @@ then
     exit 1
 fi
 
-# Créer la base de données si elle n'existe pas
-echo "Création de la base de données si elle n'existe pas..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;"
+## Créer la base de données si elle n'existe pas
+#echo "Création de la base de données si elle n'existe pas..."
+#mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;"
+#
+## Créer l'utilisateur SQL s'il n'existe pas
+#echo "Création de l'utilisateur SQL s'il n'existe pas..."
+#mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASSWORD}';"
+#
+## Accorder les privilèges à l'utilisateur sur la base de données
+#echo "Attribution des privilèges à l'utilisateur sur la base de données..."
+#mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%';"
+#
+## Configurer l'utilisateur root pour des connexions distantes
+#echo "Configuration de l'utilisateur root pour des connexions distantes..."
+#mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$SQL_ROOT_PASSWORD' WITH GRANT OPTION;"
+#
+## Rafraîchir les privilèges pour appliquer les modifications
+#echo "Rafraîchissement des privilèges..."
+#mysql -u root -p"$SQL_ROOT_PASSWORD" -e "FLUSH PRIVILEGES;"
+#
+## Arrêter proprement MariaDB avec mysqladmin
+#echo "Arrêt propre de MariaDB avec mysqladmin..."
+#mysqladmin -u root -p"$SQL_ROOT_PASSWORD" shutdown
 
-# Créer l'utilisateur SQL s'il n'existe pas
-echo "Création de l'utilisateur SQL s'il n'existe pas..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASSWORD}';"
+echo "${MYSQL_DATABASE}"
 
-# Accorder les privilèges à l'utilisateur sur la base de données
-echo "Attribution des privilèges à l'utilisateur sur la base de données..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%';"
-
-# Configurer l'utilisateur root pour des connexions distantes
-echo "Configuration de l'utilisateur root pour des connexions distantes..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$SQL_ROOT_PASSWORD' WITH GRANT OPTION;"
-
-# Rafraîchir les privilèges pour appliquer les modifications
-echo "Rafraîchissement des privilèges..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "FLUSH PRIVILEGES;"
-
-# Arrêter proprement MariaDB avec mysqladmin
-echo "Arrêt propre de MariaDB avec mysqladmin..."
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "CREATE USER IF NOT EXISTS \`${MYSQL_USER}\`@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO \`${MYSQL_USER}\`@'%';"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "FLUSH PRIVILEGES;"
 mysqladmin -u root -p"$SQL_ROOT_PASSWORD" shutdown
-
 # Attendre quelques secondes pour s'assurer que MariaDB est complètement arrêté
 echo "Attendre quelques secondes pour la fermeture complète de MariaDB..."
 sleep 5
