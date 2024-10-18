@@ -30,19 +30,19 @@ fi
 
 # Créer la base de données si elle n'existe pas
 echo "Création de la base de données si elle n'existe pas..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;"
+mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \"${SQL_DATABASE}\";"
 
 # Créer l'utilisateur SQL s'il n'existe pas
 echo "Création de l'utilisateur SQL s'il n'existe pas..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASSWORD}';"
+mysql -u root -p"$SQL_ROOT_PASSWORD" -e "CREATE USER IF NOT EXISTS \"${SQL_USER}\"@'%' IDENTIFIED BY "${SQL_PASSWORD}";"
 
 # Accorder les privilèges à l'utilisateur sur la base de données
 echo "Attribution des privilèges à l'utilisateur sur la base de données..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%';"
+mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON \"${SQL_DATABASE}\".* TO \"${SQL_USER}\"@'%';"
 
 # Configurer l'utilisateur root pour des connexions distantes
 echo "Configuration de l'utilisateur root pour des connexions distantes..."
-mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$SQL_ROOT_PASSWORD' WITH GRANT OPTION;"
+mysql -u root -p"$SQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY "$SQL_ROOT_PASSWORD" WITH GRANT OPTION;"
 
 # Rafraîchir les privilèges pour appliquer les modifications
 echo "Rafraîchissement des privilèges..."
